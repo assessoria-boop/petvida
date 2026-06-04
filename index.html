@@ -347,13 +347,50 @@
     </div>
   </div>
 
-  <!-- GALERIA -->
-  <div class="galeria-wrap">
-    <div class="galeria-inner">
-      <span class="sec-tag">Nossa clínica</span>
-      <h2 class="sec-titulo">Estrutura pensada <span>para eles</span></h2>
-      <div class="galeria-auto">
-        <img src="clinica.webp" alt="Pet Vida Clínica Veterinária Formosa" class="galeria-slide ativo" loading="lazy" />
+  <!-- DEPOIMENTOS -->
+  <div class="sec-depoi">
+    <div class="sec-depoi-inner">
+      <span class="sec-tag">O que dizem sobre nós</span>
+      <h2 class="sec-titulo" style="font-size:32px;">Formosa <span style="color:var(--marca-claro);">confia na Pet Vida</span></h2>
+      <div class="carrossel-wrap">
+        <div class="carrossel-track" id="carrosselTrack">
+          <div class="carrossel-slide">
+            <div class="review-img-card">
+              <img src="1.webp" alt="Avaliação Pet Vida" loading="lazy" />
+            </div>
+          </div>
+          <div class="carrossel-slide">
+            <div class="review-img-card">
+              <img src="2.webp" alt="Avaliação Pet Vida" loading="lazy" />
+            </div>
+          </div>
+          <div class="carrossel-slide">
+            <div class="review-img-card">
+              <img src="3.webp" alt="Avaliação Pet Vida" loading="lazy" />
+            </div>
+          </div>
+          <div class="carrossel-slide">
+            <div class="review-img-card">
+              <img src="4.webp" alt="Avaliação Pet Vida" loading="lazy" />
+            </div>
+          </div>
+          <div class="carrossel-slide">
+            <div class="review-img-card">
+              <img src="5.webp" alt="Avaliação Pet Vida" loading="lazy" />
+            </div>
+          </div>
+        </div>
+        <div class="carrossel-nav">
+          <button class="carrossel-btn" onclick="moverCarrossel(-1)" aria-label="Anterior">&#8592;</button>
+          <div class="carrossel-dots">
+            <div class="carrossel-dot ativo" onclick="irParaSlide(0)"></div>
+            <div class="carrossel-dot" onclick="irParaSlide(1)"></div>
+            <div class="carrossel-dot" onclick="irParaSlide(2)"></div>
+            <div class="carrossel-dot" onclick="irParaSlide(3)"></div>
+            <div class="carrossel-dot" onclick="irParaSlide(4)"></div>
+          </div>
+          <button class="carrossel-btn" onclick="moverCarrossel(1)" aria-label="Próximo">&#8594;</button>
+        </div>
       </div>
     </div>
   </div>
@@ -433,54 +470,6 @@
         <div class="motivo">
           <div class="motivo-num">04</div>
           <div><h4>Localização privilegiada em Formosa</h4><p>Centro de Formosa/GO, fácil acesso e estacionamento. Atende pacientes de toda a região.</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DEPOIMENTOS -->
-  <div class="sec-depoi">
-    <div class="sec-depoi-inner">
-      <span class="sec-tag">O que dizem sobre nós</span>
-      <h2 class="sec-titulo" style="font-size:32px;">Formosa <span style="color:var(--marca-claro);">confia na Pet Vida</span></h2>
-      <div class="carrossel-wrap">
-        <div class="carrossel-track" id="carrosselTrack">
-          <div class="carrossel-slide">
-            <div class="review-img-card">
-              <img src="1.webp" alt="Avaliação Pet Vida" loading="lazy" />
-            </div>
-          </div>
-          <div class="carrossel-slide">
-            <div class="review-img-card">
-              <img src="2.webp" alt="Avaliação Pet Vida" loading="lazy" />
-            </div>
-          </div>
-          <div class="carrossel-slide">
-            <div class="review-img-card">
-              <img src="3.webp" alt="Avaliação Pet Vida" loading="lazy" />
-            </div>
-          </div>
-          <div class="carrossel-slide">
-            <div class="review-img-card">
-              <img src="4.webp" alt="Avaliação Pet Vida" loading="lazy" />
-            </div>
-          </div>
-          <div class="carrossel-slide">
-            <div class="review-img-card">
-              <img src="5.webp" alt="Avaliação Pet Vida" loading="lazy" />
-            </div>
-          </div>
-        </div>
-        <div class="carrossel-nav">
-          <button class="carrossel-btn" onclick="moverCarrossel(-1)" aria-label="Anterior">&#8592;</button>
-          <div class="carrossel-dots">
-            <div class="carrossel-dot ativo" onclick="irParaSlide(0)"></div>
-            <div class="carrossel-dot" onclick="irParaSlide(1)"></div>
-            <div class="carrossel-dot" onclick="irParaSlide(2)"></div>
-            <div class="carrossel-dot" onclick="irParaSlide(3)"></div>
-            <div class="carrossel-dot" onclick="irParaSlide(4)"></div>
-          </div>
-          <button class="carrossel-btn" onclick="moverCarrossel(1)" aria-label="Próximo">&#8594;</button>
         </div>
       </div>
     </div>
