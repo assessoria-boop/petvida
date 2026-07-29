@@ -10,9 +10,38 @@
   <link rel="preconnect" href="https://www.googletagmanager.com" />
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5CDCM8G9');</script>
-  <!-- End Google Tag Manager -->
+  <!--
+    Rastreamento sem GTM: o container GTM-5CDCM8G9 só executava, nesta página,
+    a Google tag AW-17773221172, o Conversion Linker (nativo do gtag), o Clarity
+    e a conversão no clique em links wa.me. Carregar o gtag direto dispensa os
+    ~150 KiB do gtm.js. Reverter = restaurar o snippet do GTM.
+  -->
+  <!-- Google tag (gtag.js) — Google Ads AW-17773221172 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17773221172"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'AW-17773221172');
+
+    /* Conversão: clique em qualquer link do WhatsApp (equivale ao gatilho
+       "clique em link contendo wa.me" que existia no GTM) */
+    document.addEventListener('click', function(e) {
+      var alvo = e.target;
+      if (!alvo || typeof alvo.closest !== 'function') return;
+      if (!alvo.closest('a[href*="wa.me"]')) return;
+      gtag('event', 'conversion', { send_to: 'AW-17773221172/dKftCIbvv8sbELSq95pC' });
+    }, true);
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,"clarity","script","uc5wvj6flk");
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -296,10 +325,6 @@
   </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CDCM8G9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-
   <!-- TOPO -->
   <div class="topo">
     <span class="topo-dot"></span>
