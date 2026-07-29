@@ -28,6 +28,10 @@
       --cinza-claro: #f4f4f5;
       --borda: #e5e7eb;
       --branco: #fff;
+
+      /* alturas fixas de topo/nav — usadas no calc do hero (evita medir via JS) */
+      --h-topo: 35px;
+      --h-nav: 77px;
     }
 
     html { scroll-behavior: smooth; overflow-x: hidden; }
@@ -46,6 +50,7 @@
       text-align: center;
       padding: 9px 20px;
       font-size: 13px;
+      line-height: 17px; /* 9 + 17 + 9 = --h-topo */
       font-weight: 500;
     }
     .topo-dot {
@@ -77,13 +82,15 @@
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .nav-logo-circulo { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
     .nav-logo-circulo img { width: 100%; height: 100%; object-fit: cover; }
-    .nav-nome { font-size: 18px; font-weight: 900; color: var(--marca); letter-spacing: -0.5px; }
+    /* nowrap mantém o nav em 40px de conteúdo (= --h-nav) mesmo em telas estreitas */
+    .nav-nome { font-size: 18px; font-weight: 900; color: var(--marca); letter-spacing: -0.5px; white-space: nowrap; }
     .nav-badge { font-size: 12px; font-weight: 600; color: var(--marca); background: var(--marca-suave); border-radius: 999px; padding: 3px 10px; }
     .nav-btn {
       display: inline-flex; align-items: center; gap: 6px;
       background: var(--wpp); color: white;
       font-size: 13px; font-weight: 700;
       padding: 8px 16px; border-radius: 999px; text-decoration: none;
+      white-space: nowrap;
       transition: all 0.2s;
     }
     .nav-btn:hover { background: var(--wpp-hover); transform: translateY(-1px); }
@@ -91,8 +98,9 @@
 
     /* ── HERO ── */
     .hero {
-      min-height: 100vh;
-      min-height: 100svh;
+      min-height: 480px;
+      min-height: max(480px, calc(100vh - var(--h-topo) - var(--h-nav)));
+      min-height: max(480px, calc(100svh - var(--h-topo) - var(--h-nav)));
       display: flex; align-items: center; justify-content: center;
       text-align: center;
       padding: 80px 24px;
@@ -229,6 +237,7 @@
 
     /* ── RESPONSIVO ── */
     @media (max-width: 900px) {
+      :root { --h-nav: 69px; }
       nav { padding: 14px 20px; }
       nav .nav-badge { display: none; }
 
@@ -271,6 +280,12 @@
 
       .wpp-float { width: 64px; height: 64px; bottom: 20px; right: 20px; }
       .wpp-float svg { width: 32px; height: 32px; }
+    }
+
+    @media (max-width: 380px) {
+      nav { padding: 14px 14px; }
+      .nav-nome { font-size: 16px; }
+      .nav-btn { padding: 8px 12px; font-size: 12px; }
     }
 
     @media (max-width: 420px) {
@@ -520,30 +535,21 @@
   </a>
 
   <script>
-    /* ── HERO ALTURA ── */
-    (function() {
-      var topo = document.querySelector('.topo');
-      var nav  = document.querySelector('nav');
-      var hero = document.querySelector('.hero');
-      function ajustar() {
-        var h = window.innerHeight - topo.offsetHeight - nav.offsetHeight;
-        hero.style.minHeight = Math.max(h, 480) + 'px';
-      }
-      ajustar();
-      window.addEventListener('resize', ajustar);
-    })();
+    /* Altura do hero agora é 100% CSS (calc com --h-topo/--h-nav) — sem medir layout no JS */
 
     /* ── CARROSSEL ── */
     var slideAtual = 0;
-    var totalSlides = document.querySelectorAll('.carrossel-slide').length;
+    var slides = document.querySelectorAll('.carrossel-slide');
+    var dots = document.querySelectorAll('.carrossel-dot');
+    var totalSlides = slides.length;
+    var track = document.getElementById('carrosselTrack');
 
+    /* cada slide ocupa 100% do track, então o deslocamento é em % — dispensa ler offsetWidth */
     function atualizarCarrossel() {
-      var track = document.getElementById('carrosselTrack');
-      var w = track.querySelector('.carrossel-slide').offsetWidth;
-      track.style.transform = 'translateX(-' + (slideAtual * w) + 'px)';
-      document.querySelectorAll('.carrossel-dot').forEach(function(d, i) {
-        d.classList.toggle('ativo', i === slideAtual);
-      });
+      track.style.transform = 'translateX(-' + (slideAtual * 100) + '%)';
+      for (var i = 0; i < dots.length; i++) {
+        dots[i].classList.toggle('ativo', i === slideAtual);
+      }
     }
 
     function moverCarrossel(dir) {
@@ -555,8 +561,6 @@
       slideAtual = i;
       atualizarCarrossel();
     }
-
-    var track = document.getElementById('carrosselTrack');
 
     /* Touch */
     var touchStartX = 0;
