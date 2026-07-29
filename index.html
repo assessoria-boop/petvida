@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5CDCM8G9');</script>
-  <!-- End Google Tag Manager -->
   <title>Pet Vida – Clínica Veterinária 24h em Formosa/GO</title>
   <meta name="description" content="Clínica Veterinária 24h em Formosa/GO. Consultas, cirurgias, internação, laboratório próprio, exames de imagem, vacinação e banho & tosa. +18 anos de experiência." />
   <link rel="icon" type="image/webp" href="logo.webp" />
   <link rel="preload" as="image" href="clinica.webp" fetchpriority="high" />
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5CDCM8G9');</script>
+  <!-- End Google Tag Manager -->
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -150,25 +153,6 @@
     .stat-num { font-size: 28px; font-weight: 900; color: var(--marca); letter-spacing: -1px; }
     .stat-label { font-size: 12px; color: var(--cinza); margin-top: 2px; font-weight: 500; }
 
-    /* ── GALERIA ── */
-    .galeria-wrap { background: var(--cinza-claro); padding: 88px 48px; }
-    .galeria-inner { max-width: 1100px; margin: 0 auto; }
-    .galeria-auto {
-      position: relative;
-      max-width: 720px; margin: 48px auto 0;
-      border-radius: 20px; overflow: hidden;
-      background: #dde7ea;
-      aspect-ratio: 4 / 3;
-    }
-    .galeria-slide {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 0.9s ease;
-    }
-    .galeria-slide.ativo { opacity: 1; }
-
     /* ── SEÇÕES ── */
     .sec { padding: 88px 48px; max-width: 1100px; margin: 0 auto; }
     .sec-tag { display: inline-block; font-size: 11px; font-weight: 600; color: var(--marca); text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 12px; }
@@ -223,8 +207,15 @@
     .info-linha { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--cinza); line-height: 1.5; }
     .info-linha .ico { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
     .info-linha strong { color: var(--texto); display: block; }
-    .mapa { border-radius: 24px; overflow: hidden; height: 340px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
-    .mapa iframe { width: 100%; height: 100%; border: none; }
+    .mapa { border-radius: 24px; overflow: hidden; height: 340px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); position: relative; background: #e4e9ec; }
+    .mapa iframe { width: 100%; height: 100%; border: none; display: block; }
+    .mapa-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+      background: repeating-linear-gradient(45deg, #e4e9ec 0 12px, #dde4e8 12px 24px);
+      color: var(--marca); font-size: 14px; font-weight: 600;
+    }
+    .mapa-placeholder span { font-size: 30px; }
 
     /* ── FOOTER ── */
     footer { border-top: 1px solid var(--borda); padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
@@ -249,9 +240,6 @@
       .stats { padding: 24px 20px; }
       .stats-inner { gap: 16px; }
       .stat-num { font-size: 22px; }
-
-      .galeria-wrap { padding: 56px 20px; }
-      .galeria-inner { text-align: center; }
 
       .sec { padding: 56px 20px; text-align: center; }
       .sec-sub { margin-left: auto; margin-right: auto; }
@@ -306,7 +294,7 @@
   <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo">
-      <div class="nav-logo-circulo"><img src="logo.webp" alt="Pet Vida" loading="lazy" /></div>
+      <div class="nav-logo-circulo"><img src="logo.webp" alt="Pet Vida" width="192" height="192" decoding="async" /></div>
       <span class="nav-nome">Pet Vida</span>
       <span class="nav-badge">Clínica Veterinária</span>
     </a>
@@ -318,10 +306,10 @@
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-bg"><img src="clinica.webp" alt="" fetchpriority="high" decoding="sync" /></div>
+    <div class="hero-bg"><img src="clinica.webp" alt="" width="574" height="1020" fetchpriority="high" decoding="sync" /></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="hero-logo-circulo"><img src="logo.webp" alt="Pet Vida" /></div>
+      <div class="hero-logo-circulo"><img src="logo.webp" alt="Pet Vida" width="192" height="192" decoding="async" /></div>
       <p class="hero-clinica-nome">Pet Vida</p>
       <h1>Clínica Veterinária<br /><span>24 Horas</span></h1>
 <div class="hero-localizacao">
@@ -356,27 +344,27 @@
         <div class="carrossel-track" id="carrosselTrack">
           <div class="carrossel-slide">
             <div class="review-img-card">
-              <img src="1.webp" alt="Avaliação Pet Vida" loading="lazy" />
+              <img src="1.webp" alt="Avaliação Pet Vida" width="720" height="889" loading="lazy" decoding="async" />
             </div>
           </div>
           <div class="carrossel-slide">
             <div class="review-img-card">
-              <img src="2.webp" alt="Avaliação Pet Vida" loading="lazy" />
+              <img src="2.webp" alt="Avaliação Pet Vida" width="720" height="889" loading="lazy" decoding="async" />
             </div>
           </div>
           <div class="carrossel-slide">
             <div class="review-img-card">
-              <img src="3.webp" alt="Avaliação Pet Vida" loading="lazy" />
+              <img src="3.webp" alt="Avaliação Pet Vida" width="720" height="889" loading="lazy" decoding="async" />
             </div>
           </div>
           <div class="carrossel-slide">
             <div class="review-img-card">
-              <img src="4.webp" alt="Avaliação Pet Vida" loading="lazy" />
+              <img src="4.webp" alt="Avaliação Pet Vida" width="720" height="889" loading="lazy" decoding="async" />
             </div>
           </div>
           <div class="carrossel-slide">
             <div class="review-img-card">
-              <img src="5.webp" alt="Avaliação Pet Vida" loading="lazy" />
+              <img src="5.webp" alt="Avaliação Pet Vida" width="720" height="889" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
@@ -510,8 +498,8 @@
           Atendimento Imediato
         </a>
       </div>
-      <div class="mapa">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3843.872335438326!2d-47.335722!3d-15.5449731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9350a27c6284614d%3A0xa887ef707347ec7d!2sCl%C3%ADnica%20Veterin%C3%A1ria%20Pet%20Vida!5e0!3m2!1spt-BR!2sbr!4v1779205417330!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="mapa" id="mapa" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3843.872335438326!2d-47.335722!3d-15.5449731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9350a27c6284614d%3A0xa887ef707347ec7d!2sCl%C3%ADnica%20Veterin%C3%A1ria%20Pet%20Vida!5e0!3m2!1spt-BR!2sbr!4v1779205417330!5m2!1spt-BR!2sbr">
+        <div class="mapa-placeholder"><span>📍</span>Carregando mapa…</div>
       </div>
     </div>
   </div>
@@ -593,16 +581,34 @@
     /* Auto-avançar carrossel */
     setInterval(function() { moverCarrossel(1); }, 5000);
 
-    /* ── GALERIA FADE ── */
-    var galeriaSlides = document.querySelectorAll('.galeria-slide');
-    var galeriaAtual = 0;
-    if (galeriaSlides.length > 1) {
-      setInterval(function() {
-        galeriaSlides[galeriaAtual].classList.remove('ativo');
-        galeriaAtual = (galeriaAtual + 1) % galeriaSlides.length;
-        galeriaSlides[galeriaAtual].classList.add('ativo');
-      }, 3500);
-    }
+    /* ── MAPA SOB DEMANDA ── */
+    (function() {
+      var caixa = document.getElementById('mapa');
+      if (!caixa) return;
+      var carregado = false;
+      function carregarMapa() {
+        if (carregado) return; carregado = true;
+        var iframe = document.createElement('iframe');
+        iframe.src = caixa.dataset.src;
+        iframe.title = 'Mapa - Pet Vida, Formosa/GO';
+        iframe.loading = 'lazy';
+        iframe.allowFullscreen = true;
+        iframe.referrerPolicy = 'no-referrer-when-downgrade';
+        iframe.addEventListener('load', function() {
+          var ph = caixa.querySelector('.mapa-placeholder');
+          if (ph) ph.remove();
+        });
+        caixa.appendChild(iframe);
+      }
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function(entradas) {
+          if (entradas[0].isIntersecting) { obs.disconnect(); carregarMapa(); }
+        }, { rootMargin: '300px' });
+        obs.observe(caixa);
+      } else {
+        window.addEventListener('load', carregarMapa);
+      }
+    })();
   </script>
 </body>
 </html>
